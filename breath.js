@@ -9,15 +9,21 @@ let congrat_page=document.getElementById('congrat-section');
 let breath_command=document.querySelector('.breath-command');
 var total_duration=5;
 let time_var=document.querySelector('.time');
-var duration=5;
+const duration=5;
+var Interval=0;
+var Timeout=0;
 
 for(i=0;i<timing.length;i++){
     console.log(timing[i])
     
     timing[i].onclick=function(e){
         let value=e.target.value;
+        
         render_breath_page();
-        setTimeout(render_congrats_page,value*1000);
+        
+        Timeout=setTimeout(render_congrats_page,value*1000);
+        
+        
     }
 
 }
@@ -33,15 +39,15 @@ function render_main_page(){
     main_page.style.display='flex';
    
 }
-function render_breath_page(){
+function render_breath_page(interval){
     breathing_page.style.display='flex';
     main_page.style.display='none';
     congrat_page.style.display='none';
-    setInterval(render_breath_changes,duration*1000);
+    Interval=setInterval(render_breath_changes,duration*1000);
 }
 
 function render_breath_changes(){
-    
+    console.log(duration)
     total_duration+=duration;
     if(breath_command.innerText=="nefes ver"){
         breath_command.innerText="nefes tut";
@@ -58,11 +64,16 @@ function render_breath_changes(){
    
     
 }
-function render_congrats_page(time){
+function render_congrats_page(){
     breathing_page.style.display='none';
     congrat_page.style.display='flex';
     main_page.style.display='none';
     time_var.innerText=`${total_duration} saniye `;
+    clearInterval(Interval);
+    clearTimeout(Timeout);
+    total_duration=5;
+    breath_command.innerText="nefes al";
+
     
 
 }
