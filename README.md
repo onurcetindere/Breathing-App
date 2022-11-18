@@ -1,5 +1,4 @@
 # Nefes-Uygulama-Projesi
 
-Nefes alma verme uygulaması.
-JS,CSS HTML.
-Çetindere Tarafından Programlandı,tasarlandı.
+#Mental Sağlık için belirli bir süre nefes alıp verme ritmine alıştıran uygulama.
+# JS,CS,HTML kullanarak oluşturuldu
